@@ -140,8 +140,43 @@ btnReiniciar.addEventListener("click", reiniciar);
 window.addEventListener("online", actualizarStatus);
 window.addEventListener("offline", actualizarStatus);
 
+// --- Splash cosmético (solo decorativo, no verifica nada real) ---
+const SPLASH_PASOS = [
+  { texto: "🔍 Verificando dispositivo...", ok: false },
+  { texto: "✅ Sin emulador detectado", ok: true },
+  { texto: "✅ Sin root detectado", ok: true },
+  { texto: "✅ Todo listo", ok: true }
+];
+
+function runSplash(onDone) {
+  const splash = document.getElementById("splash");
+  const lines = document.getElementById("splashLines");
+  let i = 0;
+
+  function paso() {
+    if (i >= SPLASH_PASOS.length) {
+      setTimeout(() => {
+        splash.classList.add("fade-out");
+        setTimeout(() => splash.remove(), 400);
+        onDone();
+      }, 400);
+      return;
+    }
+    const p = SPLASH_PASOS[i];
+    const div = document.createElement("div");
+    div.className = "splash-line" + (p.ok ? " ok" : "");
+    div.textContent = p.texto;
+    lines.appendChild(div);
+    i++;
+    setTimeout(paso, 450);
+  }
+  paso();
+}
+
 // --- Init ---
 timerText.textContent = formatTime(segundosRestantes);
 actualizarStatus();
 renderPregunta();
-timerInterval = setInterval(tick, 1000);
+runSplash(() => {
+  timerInterval = setInterval(tick, 1000);
+});

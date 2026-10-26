@@ -32,6 +32,61 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity .4s ease;
+}
+
+.splash.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: var(--accent);
+  color: var(--dark);
+  font-weight: 800;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+}
+
+.splash-lines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-height: 120px;
+}
+
+.splash-line {
+  color: #d8d5e4;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: splash-in .3s ease forwards;
+}
+
+.splash-line.ok { color: var(--ok); }
+
+@keyframes splash-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .app {
   max-width: 480px;
   margin: 0 auto;
