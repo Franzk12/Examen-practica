@@ -1,150 +1,127 @@
-// Banco de preguntas de práctica — 3er Parcial Sistemas Operativos.
+// Banco de preguntas de práctica — 3er Parcial Sistemas Operativos (122 preguntas).
+// Cada partida de práctica elige 10 al azar de este banco (ver script.js).
 // Para agregar una pregunta: copiá un bloque {...} y cambiá el texto.
-// "correcta" es el índice (empezando en 0) de la opción correcta en "opciones".
 const PREGUNTAS = [
-  {
-    texto: "¿Cuál de las condiciones necesarias para que haya abrazo mortal no se puede eliminar de un sistema?",
-    opciones: ["Exclusión mutua", "Inanición", "Retención y espera", "Espera circular"],
-    correcta: 0
-  },
-  {
-    texto: "¿Por qué algunos desarrolladores de SOs de propósito general prefieren ignorar el problema de abrazo mortal?",
-    opciones: [
-      "Es muy costoso implementar algoritmos de detección, o demás soluciones.",
-      "Porque hay miles de procesos y no podemos saber de antemano la cantidad de recursos que necesitarán",
-      "Impedir alguna de las cuatro condiciones puede llevarnos a problemas en términos de concurrencia",
-      "Porque sostienen que los abrazos mortales no son frecuentes y dejan que se resuelva a nivel de aplicación en coordinación con el usuario"
-    ],
-    correcta: 3
-  },
-  {
-    texto: "¿Qué indica un ciclo en un grafo de asignación de recursos?",
-    opciones: ["Que puede haber un abrazo mortal", "Que se produjo un abrazo mortal", "Que no hay abrazo mortal", "Que el sistema está en un estado seguro"],
-    correcta: 0
-  },
-  {
-    texto: "¿Qué indica un ciclo en un grafo de asignación de recursos con sólo una instancia de cada tipo de recurso?",
-    opciones: ["Que se produjo un abrazo mortal", "Que puede haber abrazo mortal", "Que no hay abrazo mortal", "Que el sistema está en un estado seguro"],
-    correcta: 0
-  },
-  {
-    texto: "¿Cuál de las siguientes NO ES condición necesaria para que haya abrazo mortal?",
-    opciones: ["Inanición", "Exclusión mutua", "Retención y espera", "Espera circular"],
-    correcta: 0
-  },
-  {
-    texto: "¿Qué método se sugiere en el tp de semáforos para determinar el tamaño de un semáforo en memoria?",
-    opciones: ["Examinar el código fuente de la librería", "Comparar las direcciones de memoria asignadas a los semáforos", "Usando sizeof(mutex);", "Mostrando con printf"],
-    correcta: 2
-  },
-  {
-    texto: "¿Qué representan los vértices del grafo de asignación de recursos?",
-    opciones: ["Asignaciones", "Procesos o recursos", "Procesos", "Recursos"],
-    correcta: 1
-  },
-  {
-    texto: "¿Puede un programa que tenga condiciones de carrera andar bien?",
-    opciones: ["Si, mientras no haya exclusión mutua andará bien", "No, porque las condiciones de carrera son errores o incoherencias", "Si, puede que jamás falle", "No, porque tendrá incoherencias"],
-    correcta: 2
-  },
-  {
-    texto: "¿Qué característica tiene la función sem_try_wait?",
-    opciones: ["Tiene mucho overhead", "La función no existe", "Es sincrónica", "No es bloqueante"],
-    correcta: 3
-  },
-  {
-    texto: "¿Cuál es el problema de usar espera activa u ocupada?",
-    opciones: ["Que hace uso intensivo de la CPU", "Que demora más que un bloqueo", "No hay desventaja con este tipo de espera", "Que el proceso va a la cola de listos"],
-    correcta: 0
-  },
-  {
-    texto: "¿Por qué es importante gestionar la RAM?",
-    opciones: ["Para evitar fallos de página.", "Para acelerar el procesamiento de la CPU.", "Todas las mencionadas.", "Para aumentar el grado de multiprogramación."],
-    correcta: 2
-  },
-  {
-    texto: "¿Qué significa exclusión mutua?",
-    opciones: ["Que los recursos son usados de a un proceso por vez.", "Que los procesos usan de a un recurso por vez,", "Que los programas usan los recursos de a uno por vez.", "Que los recursos son usados de a un programa por vez."],
-    correcta: 0
-  },
-  {
-    texto: "¿Qué diferencia hay entre una página y un marco?",
-    opciones: ["Todas las mencionadas.", "La página es del proceso, el marco de la RAM.", "La página puede cambiar de tamaño, el marco no.", "El marco se reubica en las distintas páginas de la RAM."],
-    correcta: 1
-  },
-  {
-    texto: "¿De qué tema trata el TP de concurrencia?",
-    opciones: ["Problema de sección crítica.", "Condiciones de carrera.", "Todos los anteriores.", "Creación de hijos con fork()."],
-    correcta: 2
-  },
-  {
-    texto: "¿Para qué sirve el comando \"time\", usado, por ejemplo, así: time ./a.out?",
-    opciones: [
-      "Muestra el tiempo de reloj, el de usuario y de sistema que tarda en ejecutar.",
-      "Permite ejecutar un comando a una hora determinada por el usuario.",
-      "Permite conocer la hora actual, y cambiarla según los parámetros especificados.",
-      "Muestra el tiempo de reloj que toma en ejecutar el programa especificado."
-    ],
-    correcta: 0
-  },
-  {
-    texto: "¿Cuál de estas características presenta un proceso limitado por CPU?",
-    opciones: ["Alto tiempo de ejecución.", "Alta utilización de recursos de disco rígido.", "Baja utilización de CPU.", "Alta utilización de CPU."],
-    correcta: 3
-  },
-  {
-    texto: "¿Para qué el padre espera que finalicen los hijos en el TP de concurrencia?",
-    opciones: [
-      "Para poder desprender el segmento de memoria compartida.",
-      "Para poder presentar por pantalla el valor final del contador.",
-      "Para revisar que todos hayan hecho su trabajo.",
-      "Para relanzar el hijo que haya finalizado."
-    ],
-    correcta: 0
-  },
-  {
-    texto: "¿Cuál es la función principal del planificador de corto plazo?",
-    opciones: ["Determinar qué proceso utilizará cada CPU.", "Administrar los procesos en su ciclo de vida.", "Controlar el tiempo que cada proceso usa la CPU.", "Esperar que los usuarios abusen del sistema."],
-    correcta: 0
-  },
-  {
-    texto: "¿En qué estructura de datos deben estar los procesos para que el planificador los utilice?",
-    opciones: ["La cola de planificación del grupo adecuado.", "La cola de listos.", "La cola de bloqueados.", "El PCB."],
-    correcta: 1
-  },
-  {
-    texto: "¿Qué producen las condiciones de carrera?",
-    opciones: [
-      "Incoherencias en los datos.",
-      "Que los resultados dependan del orden de ejecución de las instrucciones.",
-      "Que los procesos ejecuten las instrucciones erróneamente.",
-      "Que los recursos sean mal utilizados al haber concurrencia."
-    ],
-    correcta: 1
-  },
-  {
-    texto: "¿Cuál de las siguientes No conforma una condición de carrera?",
-    opciones: ["Exclusión mutua.", "Concurrencia.", "Multiprocesamiento.", "Recursos compartidos."],
-    correcta: 0
-  },
-  {
-    texto: "¿Para qué se usa la memoria compartida?",
-    opciones: [
-      "Para agilizar el procesamiento.",
-      "Es una manera de que los procesos se comuniquen entre sí.",
-      "Para asegurar la aparición de las incoherencias.",
-      "Para no tener que trabajar con archivos."
-    ],
-    correcta: 1
-  },
-  {
-    texto: "¿Por qué en el TP de concurrencia usamos un puntero a la memoria compartida?",
-    opciones: [
-      "Porque no sabemos de antemano qué ubicación tendrá.",
-      "Porque al usar el puntero se cataliza la conversión forzada de tipo.",
-      "Porque los tipos de variables comunes no pueden albergar el tamaño de la memoria.",
-      "Todas las anteriores."
-    ],
-    correcta: 0
-  }
+  { texto: "¿Qué comparten las hebras de un mismo proceso?", opciones: ["La pila y el conjunto de registros.", "El contador de programa y la pila.", "El código, los datos y los archivos abiertos.", "El identificador de hebra y los registros."], correcta: 2 },
+  { texto: "¿Qué tiene cada hebra en forma propia?", opciones: ["El código del programa.", "La sección de datos globales.", "Los archivos abiertos del proceso.", "Su contador de programa, registros y pila."], correcta: 3 },
+  { texto: "Una hebra (hilo) es:", opciones: ["Un programa almacenado en disco.", "La unidad básica de utilización de la CPU.", "Un proceso que no tiene memoria.", "Una cola del planificador de CPU."], correcta: 1 },
+  { texto: "En el modelo muchos a uno, si una hebra hace una llamada bloqueante:", opciones: ["Se bloquea el proceso entero.", "Se bloquea solo esa hebra.", "El kernel crea otra hebra de kernel.", "El SO migra la hebra a otro núcleo."], correcta: 0 },
+  { texto: "¿Por qué el modelo muchos a uno no aprovecha varios procesadores?", opciones: ["Porque las hebras no comparten memoria.", "Porque el kernel prohíbe usar más de una CPU.", "Porque solo una hebra de kernel ejecuta a la vez.", "Porque las hebras de usuario son más lentas."], correcta: 2 },
+  { texto: "¿Cuál es la principal desventaja del modelo uno a uno?", opciones: ["Una llamada bloqueante bloquea a todas las hebras.", "Cada hebra de usuario exige crear una hebra de kernel.", "No permite ejecutar hebras en paralelo.", "Las hebras no pueden compartir datos."], correcta: 1 },
+  { texto: "El modelo muchos a muchos:", opciones: ["Asigna una hebra de kernel a cada proceso.", "Impide el paralelismo entre hebras.", "Solo existe en sistemas con un núcleo.", "Multiplexa hebras de usuario sobre varias de kernel."], correcta: 3 },
+  { texto: "Dos hebras se ejecutan en un sistema con un solo núcleo. Hay:", opciones: ["Paralelismo real entre ambas hebras.", "Concurrencia, por alternancia de la CPU.", "Ni concurrencia ni paralelismo posibles.", "Paralelismo, si el modelo es uno a uno."], correcta: 1 },
+  { texto: "En la cancelación diferida:", opciones: ["La hebra termina de inmediato al recibir el pedido.", "La hebra se cancela antes de empezar a ejecutarse.", "Solo el kernel puede pedir la cancelación.", "La hebra comprueba en puntos seguros si debe terminar."], correcta: 3 },
+  { texto: "¿Cuál es el riesgo de la cancelación asíncrona?", opciones: ["Puede dejar datos o recursos en estado inconsistente.", "Hace que la hebra nunca termine.", "Obliga a reiniciar el proceso completo.", "Impide crear nuevas hebras en el proceso."], correcta: 0 },
+  { texto: "Una señal síncrona por acceso ilegal a memoria se entrega:", opciones: ["A todas las hebras del proceso.", "A la hebra que la provocó.", "Al proceso padre.", "A la primera hebra creada."], correcta: 1 },
+  { texto: "¿Cuál es una ventaja de la programación multihebra?", opciones: ["Mejor capacidad de respuesta.", "Economía al crear y cambiar de contexto.", "Aprovechar varios procesadores.", "Todas las mencionadas."], correcta: 3 },
+  { texto: "¿Qué diferencia hay entre fork() y exec()?", opciones: ["fork() reemplaza el programa; exec() crea un proceso.", "Ambas crean un proceso hijo idéntico.", "fork() crea un proceso; exec() reemplaza su programa.", "exec() crea una hebra; fork() un proceso."], correcta: 2 },
+  { texto: "En Linux, la llamada clone():", opciones: ["Permite elegir qué recursos comparte la tarea hija.", "Crea siempre un proceso sin nada compartido.", "Solo sirve para copiar archivos abiertos.", "Reemplaza el programa del proceso actual."], correcta: 0 },
+  { texto: "¿Para qué sirve el comando time, usado, por ejemplo, así: time ./a.out?", opciones: ["Muestra el tiempo de reloj, el de usuario y de sistema que tarda en ejecutar.", "Permite ejecutar un comando a una hora determinada por el usuario.", "Permite conocer la hora actual, y cambiarla según los parámetros especificados.", "Muestra el tiempo de reloj que toma en ejecutar el programa especificado."], correcta: 0 },
+  { texto: "¿Cuál de estas características presenta un proceso limitado por CPU?", opciones: ["Alto tiempo de ejecución.", "Alta utilización de recursos de disco rígido.", "Baja utilización de CPU.", "Alta utilización de CPU."], correcta: 3 },
+  { texto: "¿Cuál es la función principal del planificador de corto plazo?", opciones: ["Determinar qué proceso utilizará cada CPU.", "Administrar los procesos en su ciclo de vida.", "Controlar el tiempo que cada proceso usa la CPU.", "Esperar que los usuarios abusen del sistema."], correcta: 0 },
+  { texto: "¿En qué estructura de datos deben estar los procesos para que el planificador los utilice?", opciones: ["La cola de planificación del grupo adecuado.", "La cola de listos.", "La cola de bloqueados.", "El PCB."], correcta: 1 },
+  { texto: "Un proceso espera que termine una lectura de disco. Está en estado:", opciones: ["Listo.", "En ejecución.", "Bloqueado (en espera).", "Terminado."], correcta: 2 },
+  { texto: "¿Qué hace el despachador?", opciones: ["Elige qué proceso pasa a la CPU.", "Cambia el contexto y entrega la CPU al elegido.", "Admite procesos nuevos en memoria.", "Saca procesos de memoria a disco."], correcta: 1 },
+  { texto: "Un proceso limitado por E/S (I/O-bound) se caracteriza por:", opciones: ["Ráfagas de CPU largas y poca E/S.", "Uso intensivo y continuo de la CPU.", "No realizar nunca operaciones de E/S.", "Ráfagas de CPU cortas y esperas de E/S frecuentes."], correcta: 3 },
+  { texto: "En la planificación apropiativa (con desalojo):", opciones: ["El SO puede quitarle la CPU a un proceso en ejecución.", "El proceso usa la CPU hasta bloquearse o terminar.", "Solo se planifica cuando un proceso termina.", "No existe cambio de contexto entre procesos."], correcta: 0 },
+  { texto: "El tiempo de espera de un proceso es:", opciones: ["El tiempo desde que llega hasta que termina.", "El tiempo total que pasa en la cola de listos.", "El tiempo hasta producir la primera respuesta.", "El tiempo total bloqueado por E/S."], correcta: 1 },
+  { texto: "Un proceso llega en t=0: ready 4 ms, CPU 5 ms, E/S 6 ms, ready 3 ms, CPU 2 ms. ¿Tiempo de espera?", opciones: ["7 ms.", "13 ms.", "20 ms.", "4 ms."], correcta: 0 },
+  { texto: "Mismo proceso que la pregunta anterior. ¿Tiempo de retorno?", opciones: ["7 ms.", "13 ms.", "20 ms.", "15 ms."], correcta: 2 },
+  { texto: "FCFS. Llegan en t=0, en este orden: P1 (24 ms), P2 (3 ms), P3 (3 ms). ¿Espera promedio?", opciones: ["3 ms.", "9 ms.", "27 ms.", "17 ms."], correcta: 3 },
+  { texto: "Los mismos procesos con SJF (sin desalojo). ¿Espera promedio?", opciones: ["17 ms.", "3 ms.", "6 ms.", "9 ms."], correcta: 1 },
+  { texto: "¿Cuál es la dificultad práctica de SJF?", opciones: ["Produce siempre la mayor espera promedio.", "No permite desalojar procesos.", "No se conoce de antemano la próxima ráfaga.", "Solo funciona con un único proceso."], correcta: 2 },
+  { texto: "En Round Robin, un proceso que agota su quantum y no terminó:", opciones: ["Pasa a la cola de bloqueados.", "Vuelve al frente de la cola de listos.", "Vuelve al final de la cola de listos.", "Termina y libera la CPU."], correcta: 2 },
+  { texto: "RR, cola de listos [P2, P3] (frente a la izquierda) y P1 en CPU. P1 agota su quantum. La cola queda:", opciones: ["[P1, P2, P3]", "[P3, P2, P1]", "[P2, P3] y P1 a bloqueados", "[P2, P3, P1]"], correcta: 3 },
+  { texto: "¿Cómo se combate la inanición en la planificación por prioridades?", opciones: ["Aumentando el quantum.", "Con envejecimiento: subir la prioridad con la espera.", "Pasando a planificación FCFS.", "Bloqueando procesos de alta prioridad."], correcta: 1 },
+  { texto: "time ./a.out muestra real 5.0s, user 0.2s, sys 0.1s. Indica que el proceso:", opciones: ["Es CPU-bound.", "Pasó la mayor parte del tiempo en el kernel.", "Pasó la mayor parte del tiempo esperando.", "Tuvo una medición errónea."], correcta: 2 },
+  { texto: "time ./a.out muestra real 3.1s, user 2.9s, sys 0.1s. El proceso:", opciones: ["Es CPU-bound.", "Pasó la mayor parte del tiempo esperando.", "Hizo muchas llamadas al sistema.", "Estuvo bloqueado por E/S casi siempre."], correcta: 0 },
+  { texto: "¿Para qué sirve la afinidad al procesador?", opciones: ["Para repartir la carga en todos los núcleos.", "Para dar más prioridad a un proceso.", "Para impedir el cambio de contexto.", "Para aprovechar la caché del procesador donde corría."], correcta: 3 },
+  { texto: "En colas multinivel realimentadas:", opciones: ["Cada proceso queda fijo en una cola.", "Los procesos pueden moverse entre colas.", "Existe una única cola FCFS.", "Solo se usa en sistemas de un núcleo."], correcta: 1 },
+  { texto: "¿Puede un programa que tenga condiciones de carrera andar bien?", opciones: ["Sí, mientras no haya exclusión mutua andará bien.", "No, porque las condiciones de carrera son errores o incoherencias.", "Sí, puede que jamás falle.", "No, porque tendrá incoherencias."], correcta: 2 },
+  { texto: "¿Cuál es el problema de usar espera activa u ocupada?", opciones: ["Que hace uso intensivo de la CPU.", "Que demora más que un bloqueo.", "No hay desventaja con este tipo de espera.", "Que el proceso va a la cola de listos."], correcta: 0 },
+  { texto: "¿Qué significa exclusión mutua?", opciones: ["Que los recursos son usados de a un proceso por vez.", "Que los procesos usan de a un recurso por vez.", "Que los programas usan los recursos de a uno por vez.", "Que los recursos son usados de a un programa por vez."], correcta: 0 },
+  { texto: "¿Qué producen las condiciones de carrera?", opciones: ["Incoherencias en los datos.", "Que los resultados dependan del orden de ejecución de las instrucciones.", "Que los procesos ejecuten las instrucciones erróneamente.", "Que los recursos sean mal utilizados al haber concurrencia."], correcta: 1 },
+  { texto: "¿Cuál de las siguientes NO conforma una condición de carrera?", opciones: ["Exclusión mutua.", "Concurrencia.", "Multiprocesamiento.", "Recursos compartidos."], correcta: 0 },
+  { texto: "¿Para qué se usa la memoria compartida?", opciones: ["Para agilizar el procesamiento.", "Es una manera de que los procesos se comuniquen entre sí.", "Para asegurar la aparición de las incoherencias.", "Para no tener que trabajar con archivos."], correcta: 1 },
+  { texto: "Una sección crítica es:", opciones: ["Una parte del kernel que no se puede interrumpir.", "Código que accede a datos compartidos y no debe ejecutarse a la vez.", "La región de memoria donde vive el semáforo.", "El código que se ejecuta al crear un proceso."], correcta: 1 },
+  { texto: "¿Cuál NO es un requisito de una solución al problema de la sección crítica?", opciones: ["Exclusión mutua.", "Progreso.", "Espera limitada.", "Multiprocesamiento."], correcta: 3 },
+  { texto: "¿Puede haber una condición de carrera en un sistema con un solo núcleo?", opciones: ["Sí, por la alternancia entre procesos.", "No, hacen falta varios núcleos.", "Solo si los procesos son CPU-bound.", "Solo si se usa memoria compartida por archivos."], correcta: 0 },
+  { texto: "Dos procesos hacen (*contador)++ sin protección; contador vale 5. Al terminar puede valer:", opciones: ["Siempre 7.", "Siempre 6.", "6 o 7, según la intercalación.", "Cualquier valor entre 0 y 7."], correcta: 2 },
+  { texto: "Diez procesos quieren usar una impresora en exclusión mutua. ¿Valor inicial del semáforo?", opciones: ["10, uno por cada proceso.", "0, para que el primero espere.", "1, para que entre uno por vez.", "9, para que uno quede excluido."], correcta: 2 },
+  { texto: "Hay 3 impresoras idénticas. Un semáforo contador para administrarlas se inicializa en:", opciones: ["1.", "3.", "0.", "La cantidad de procesos."], correcta: 1 },
+  { texto: "Un proceso hace wait (sem_wait) sobre un semáforo que vale 0:", opciones: ["Continúa y el semáforo pasa a −1 sin efecto.", "Termina con error inmediatamente.", "Entra igual a la sección crítica.", "Se bloquea hasta que otro haga signal."], correcta: 3 },
+  { texto: "La operación signal (sem_post) sobre un semáforo:", opciones: ["Incrementa el valor y despierta a un proceso que espera.", "Bloquea al proceso que la invoca.", "Pone el semáforo en cero.", "Elimina el semáforo del sistema."], correcta: 0 },
+  { texto: "En un monitor, wait sobre una variable condición:", opciones: ["Termina al proceso y libera sus recursos.", "Suma un permiso, igual que un semáforo.", "Suspende al proceso y libera el monitor.", "Bloquea el monitor hasta que se cumpla la condición."], correcta: 2 },
+  { texto: "Un consumidor hace wait(noVacio) dentro de un monitor. Mientras espera, ¿quién puede entrar?", opciones: ["Otro proceso, por ejemplo el productor.", "Nadie, hasta que el consumidor salga.", "Solo el SO, en modo kernel.", "Solo procesos de mayor prioridad."], correcta: 0 },
+  { texto: "En un monitor se hace signal(c) y no hay ningún proceso esperando en c:", opciones: ["Suma un permiso para el próximo wait.", "No tiene efecto: la señal se pierde.", "Bloquea al proceso que hizo el signal.", "Genera una excepción que atiende el SO."], correcta: 1 },
+  { texto: "¿Qué garantiza un monitor?", opciones: ["Que no haya interbloqueos.", "Que los procesos no compartan datos.", "Que el planificador sea equitativo.", "Que solo un proceso esté activo dentro de él."], correcta: 3 },
+  { texto: "¿Qué diferencia hay entre esperar bloqueado y en espera activa?", opciones: ["El bloqueado no consume CPU; al despertar pasa a listos.", "El bloqueado consume más CPU.", "La espera activa libera la CPU al planificador.", "No hay diferencia en el uso de CPU."], correcta: 0 },
+  { texto: "¿Cuándo puede convenir la espera activa?", opciones: ["Cuando la espera es larga y hay un solo núcleo.", "Cuando la espera es muy corta y hay varios núcleos.", "Siempre que haya E/S de disco.", "Nunca: siempre es peor que bloquear."], correcta: 1 },
+  { texto: "La memoria compartida, por sí sola:", opciones: ["Evita las condiciones de carrera.", "Sincroniza automáticamente a los procesos.", "No sincroniza: hace falta agregar semáforos.", "Solo permite que un proceso la lea."], correcta: 2 },
+  { texto: "¿Qué método se sugiere en el TP de semáforos para determinar el tamaño de un semáforo en memoria?", opciones: ["Examinar el código fuente de la librería.", "Comparar las direcciones de memoria asignadas a los semáforos.", "Usando sizeof(mutex);", "Mostrando con printf."], correcta: 2 },
+  { texto: "¿Qué característica tiene la función sem_trywait?", opciones: ["Tiene mucho overhead.", "La función no existe.", "Es sincrónica.", "No es bloqueante."], correcta: 3 },
+  { texto: "¿De qué tema trata el TP de concurrencia?", opciones: ["Problema de sección crítica.", "Condiciones de carrera.", "Todos los anteriores.", "Creación de hijos con fork()."], correcta: 2 },
+  { texto: "¿Para qué el padre espera que finalicen los hijos en el TP de concurrencia?", opciones: ["Para poder desprender el segmento de memoria compartida.", "Para poder presentar por pantalla el valor final del contador.", "Para revisar que todos hayan hecho su trabajo.", "Para relanzar el hijo que haya finalizado."], correcta: 0 },
+  { texto: "¿Por qué en el TP de concurrencia usamos un puntero a la memoria compartida?", opciones: ["Porque no sabemos de antemano qué ubicación tendrá.", "Porque al usar el puntero se cataliza la conversión forzada de tipo.", "Porque los tipos de variables comunes no pueden albergar el tamaño de la memoria.", "Todas las anteriores."], correcta: 0 },
+  { texto: "¿Para qué se usa la clave (key) al pedir memoria compartida con shmget?", opciones: ["Para cifrar el contenido del segmento.", "Para que los procesos con la misma clave usen el mismo segmento.", "Para indicar el tamaño del segmento.", "Para fijar la dirección física del segmento."], correcta: 1 },
+  { texto: "El segundo parámetro de shmget es:", opciones: ["La cantidad de procesos que lo usarán.", "Los permisos de acceso.", "La clave del segmento.", "El tamaño del segmento, en bytes."], correcta: 3 },
+  { texto: "¿Qué devuelve shmat?", opciones: ["La dirección donde quedó conectado el segmento.", "El identificador del segmento.", "El tamaño del segmento en bytes.", "El valor guardado en el segmento."], correcta: 0 },
+  { texto: "Si se quita el shmctl(..., IPC_RMID, ...) del final y no se inicializa el contador:", opciones: ["El programa no compila.", "El contador arranca siempre en 0.", "El segmento persiste y el contador sigue desde la ejecución anterior.", "Los hijos no pueden acceder al segmento."], correcta: 2 },
+  { texto: "En la salida «HIJO (4): Contenido de variable compartida: 6», el 4 es:", opciones: ["El PID del hijo.", "El número de orden del hijo (variable i del for).", "El valor del contador compartido.", "La cantidad de hijos que terminaron."], correcta: 1 },
+  { texto: "El lazo for del hijo que hace (*contador)++ y (*contador)-- 500 000 veces sirve para:", opciones: ["Inicializar el contador en cero.", "Hacer que el hijo espere al padre.", "Proteger la sección crítica.", "Aumentar los accesos y exponer la carrera."], correcta: 3 },
+  { texto: "¿Qué llamada al sistema usa el padre para esperar a los hijos?", opciones: ["wait()", "exit()", "shmdt()", "sleep()"], correcta: 0 },
+  { texto: "¿Qué hace sem_timedwait?", opciones: ["No se bloquea nunca.", "Elimina el semáforo pasado un tiempo.", "Espera como máximo un tiempo límite.", "Incrementa el semáforo periódicamente."], correcta: 2 },
+  { texto: "Un proceso detenido en sem_wait con el semáforo en 0 está:", opciones: ["En ejecución, consumiendo CPU.", "Bloqueado, sin consumir CPU.", "Terminado.", "En la cola de listos."], correcta: 1 },
+  { texto: "Si en el TP 8 falta un sem_post después de la sección crítica:", opciones: ["Los demás procesos quedan bloqueados para siempre.", "La sección crítica deja de estar protegida.", "El semáforo se reinicia solo.", "No pasa nada visible."], correcta: 0 },
+  { texto: "Semáforos A y B en 1. ¿Qué secuencia puede provocar un abrazo mortal?", opciones: ["P1 y P2: wait(A), wait(B).", "P1: wait(A), wait(B) — P2: wait(B), wait(A).", "P1 y P2: solo wait(A).", "P1: signal(A), signal(B) — P2: wait(A)."], correcta: 1 },
+  { texto: "¿Cuál de las condiciones necesarias para que haya abrazo mortal no se puede eliminar de un sistema?", opciones: ["Exclusión mutua.", "Inanición.", "Retención y espera.", "Espera circular."], correcta: 0 },
+  { texto: "¿Por qué algunos desarrolladores de SOs de propósito general prefieren ignorar el problema de abrazo mortal?", opciones: ["Es muy costoso implementar algoritmos de detección, o demás soluciones.", "Porque hay miles de procesos y no podemos saber de antemano la cantidad de recursos que necesitarán.", "Impedir alguna de las cuatro condiciones puede llevarnos a problemas en términos de concurrencia.", "Porque sostienen que los abrazos mortales no son frecuentes y dejan que se resuelva a nivel de aplicación en coordinación con el usuario."], correcta: 3 },
+  { texto: "¿Qué indica un ciclo en un grafo de asignación de recursos?", opciones: ["Que puede haber un abrazo mortal.", "Que se produjo un abrazo mortal.", "Que no hay abrazo mortal.", "Que el sistema está en un estado seguro."], correcta: 0 },
+  { texto: "¿Qué indica un ciclo en un grafo de asignación de recursos con sólo una instancia de cada tipo de recurso?", opciones: ["Que se produjo un abrazo mortal.", "Que puede haber abrazo mortal.", "Que no hay abrazo mortal.", "Que el sistema está en un estado seguro."], correcta: 0 },
+  { texto: "¿Cuál de las siguientes NO es condición necesaria para que haya abrazo mortal?", opciones: ["Inanición.", "Exclusión mutua.", "Retención y espera.", "Espera circular."], correcta: 0 },
+  { texto: "¿Qué representan los vértices del grafo de asignación de recursos?", opciones: ["Asignaciones.", "Procesos o recursos.", "Procesos.", "Recursos."], correcta: 1 },
+  { texto: "Un interbloqueo es:", opciones: ["Un proceso que nunca obtiene la CPU.", "Un error de programación por falta de semáforos.", "Procesos que esperan un suceso que solo otro del conjunto puede causar.", "Un proceso que ocupa la CPU en espera activa."], correcta: 2 },
+  { texto: "La condición de retención y espera significa que:", opciones: ["Un proceso retiene recursos mientras espera otros.", "Un recurso solo puede usarlo un proceso.", "No se le puede quitar un recurso a un proceso.", "Existe una cadena circular de procesos."], correcta: 0 },
+  { texto: "Para que haya interbloqueo, las cuatro condiciones necesarias deben darse:", opciones: ["Alcanza con una cualquiera.", "Alcanza con dos cualesquiera.", "Solo exclusión mutua y espera circular.", "Las cuatro a la vez."], correcta: 3 },
+  { texto: "En el grafo, una arista que va de un recurso hacia un proceso (R → P) indica:", opciones: ["Que P solicita R.", "Que P liberó R.", "Que R está asignado a P.", "Que R tiene varias instancias."], correcta: 2 },
+  { texto: "P1 tiene R1 y pide R2; P2 tiene R2 y pide R1. Hay una instancia de cada recurso. Entonces:", opciones: ["Puede haber interbloqueo.", "No hay interbloqueo.", "Hay inanición, no interbloqueo.", "Hay interbloqueo."], correcta: 3 },
+  { texto: "Igual que la anterior, pero R2 tiene dos instancias y una está libre. Entonces:", opciones: ["Hay interbloqueo seguro.", "No hay interbloqueo: P1 puede tomar la instancia libre.", "P2 queda en inanición.", "El sistema está en estado inseguro."], correcta: 1 },
+  { texto: "Si el grafo de asignación no tiene ciclos:", opciones: ["No hay interbloqueo.", "Puede haber interbloqueo.", "Hay interbloqueo.", "Hay inanición segura."], correcta: 0 },
+  { texto: "Imponer un orden fijo para pedir los recursos es una técnica de:", opciones: ["Evitación: evalúa si el estado es seguro.", "Detección: encuentra ciclos ya formados.", "Prevención: impide la espera circular.", "Recuperación: elimina procesos del ciclo."], correcta: 2 },
+  { texto: "Exigir que cada proceso pida todos sus recursos al comenzar es prevención porque:", opciones: ["Impide la exclusión mutua.", "Impide la retención y espera.", "Impide la espera circular.", "Permite la apropiación."], correcta: 1 },
+  { texto: "El algoritmo del banquero:", opciones: ["Detecta interbloqueos ya ocurridos y los rompe.", "Solo sirve con una instancia por tipo.", "Evita el interbloqueo y requiere conocer los máximos.", "Previene la exclusión mutua."], correcta: 2 },
+  { texto: "Un sistema con 5 cintas y 3 impresoras quiere evitar el interbloqueo. Conviene usar:", opciones: ["El algoritmo del banquero.", "El grafo con arcos de reclamo.", "La detección de ciclos en el grafo de espera.", "Un orden fijo para pedir recursos."], correcta: 0 },
+  { texto: "El algoritmo de evitación basado en el grafo de asignación (arcos de reclamo) sirve para:", opciones: ["Varias instancias por tipo.", "Recuperar procesos bloqueados.", "Detectar inanición.", "Una instancia por tipo de recurso."], correcta: 3 },
+  { texto: "Con el banquero, un proceso pide 1 impresora y hay 2 libres. El sistema:", opciones: ["La concede siempre, porque está libre.", "La niega siempre, por precaución.", "Aborta al proceso que la pide.", "La concede solo si el estado sigue siendo seguro."], correcta: 3 },
+  { texto: "Un estado es seguro si:", opciones: ["Existe una secuencia en la que todos los procesos pueden terminar.", "No hay ningún proceso esperando.", "Todos los recursos están libres.", "Ningún proceso tiene recursos asignados."], correcta: 0 },
+  { texto: "Un estado inseguro significa que:", opciones: ["Ya hay un interbloqueo.", "Podría llegar a haber un interbloqueo.", "Hay inanición.", "Hay que reiniciar el sistema."], correcta: 1 },
+  { texto: "¿Cuál es una forma de recuperarse de un interbloqueo detectado?", opciones: ["Ordenar los recursos.", "Pedir los máximos a los procesos.", "Terminar procesos o apropiarse de sus recursos.", "Aumentar el quantum."], correcta: 2 },
+  { texto: "Al recuperarse quitando recursos a una víctima, ¿qué riesgo hay?", opciones: ["Que aumente la fragmentación.", "Que la misma víctima sufra inanición.", "Que se elimine la exclusión mutua.", "Que el sistema quede en estado seguro."], correcta: 1 },
+  { texto: "¿Por qué es importante gestionar la RAM?", opciones: ["Para evitar fallos de página.", "Para acelerar el procesamiento de la CPU.", "Todas las mencionadas.", "Para aumentar el grado de multiprogramación."], correcta: 2 },
+  { texto: "¿Qué diferencia hay entre una página y un marco?", opciones: ["Todas las mencionadas.", "La página es del proceso, el marco de la RAM.", "La página puede cambiar de tamaño, el marco no.", "El marco se reubica en las distintas páginas de la RAM."], correcta: 1 },
+  { texto: "La dirección que genera la CPU al ejecutar un programa es:", opciones: ["Física.", "Lógica (virtual).", "Absoluta de disco.", "De marco."], correcta: 1 },
+  { texto: "¿Qué hace la MMU?", opciones: ["Asigna marcos libres a los procesos.", "Guarda las páginas en disco.", "Planifica el acceso a memoria.", "Traduce direcciones lógicas a físicas en ejecución."], correcta: 3 },
+  { texto: "Con registro de reubicación 2000, la dirección lógica 50 corresponde a la física:", opciones: ["2050.", "1950.", "50.", "2000."], correcta: 0 },
+  { texto: "Los registros base y límite sirven para:", opciones: ["Acelerar la traducción con caché.", "Elegir el próximo proceso a ejecutar.", "Proteger la memoria: un acceso fuera de rango genera una excepción.", "Compactar la memoria."], correcta: 2 },
+  { texto: "El enlace (binding) de direcciones en tiempo de ejecución:", opciones: ["Requiere recompilar si cambia la ubicación.", "Permite mover el proceso y necesita hardware (MMU).", "Fija las direcciones al cargar el programa.", "Solo se usa en sistemas sin memoria virtual."], correcta: 1 },
+  { texto: "Un bloque de 16 KB se asigna a un proceso que usa 13 KB. Hay:", opciones: ["3 KB de fragmentación externa.", "13 KB de fragmentación interna.", "Ninguna fragmentación.", "3 KB de fragmentación interna."], correcta: 3 },
+  { texto: "Hay dos huecos libres de 4 KB no contiguos y llega un pedido contiguo de 6 KB:", opciones: ["No cabe: es fragmentación externa.", "Cabe, porque hay 8 KB libres.", "No cabe: es fragmentación interna.", "Cabe usando los dos huecos."], correcta: 0 },
+  { texto: "La compactación resuelve la fragmentación:", opciones: ["Interna.", "De la TLB.", "Externa.", "De la tabla de páginas."], correcta: 2 },
+  { texto: "La estrategia de mejor ajuste (best fit) elige:", opciones: ["El primer hueco donde entra.", "El hueco más chico donde entra.", "El hueco más grande disponible.", "Un hueco al azar."], correcta: 1 },
+  { texto: "¿Qué fragmentación puede sufrir la paginación?", opciones: ["Interna, en el último marco.", "Externa, entre los marcos.", "Interna y externa por igual.", "Ninguna, la elimina por completo."], correcta: 0 },
+  { texto: "Un proceso de 10 KB con páginas de 4 KB ocupa:", opciones: ["2 marcos, sin desperdicio.", "3 marcos, con 4 KB de fragmentación externa.", "10 marcos de 1 KB.", "3 marcos, con 2 KB de fragmentación interna."], correcta: 3 },
+  { texto: "Páginas de 4 bytes; una página está en el marco 3 y el desplazamiento es 1. La dirección física es:", opciones: ["4.", "7.", "13.", "31."], correcta: 2 },
+  { texto: "Las páginas de un proceso deben cargarse en marcos:", opciones: ["Consecutivos.", "Cualesquiera, no necesariamente consecutivos.", "Del mismo número que la página.", "De distinto tamaño que la página."], correcta: 1 },
+  { texto: "¿Qué almacena la TLB?", opciones: ["El contenido de las páginas más usadas.", "La tabla de páginas completa.", "Los marcos libres del sistema.", "Traducciones página → marco."], correcta: 3 },
+  { texto: "Ante un fallo de TLB:", opciones: ["Se consulta la tabla de páginas en memoria.", "La página está en disco y hay que traerla.", "Se aborta el proceso por acceso inválido.", "Se vacía la TLB y se reinicia el proceso."], correcta: 0 },
+  { texto: "TLB con 80 % de aciertos, acceso a memoria 100 ns y búsqueda en TLB despreciable. Tiempo efectivo:", opciones: ["100 ns.", "120 ns.", "180 ns.", "200 ns."], correcta: 1 },
+  { texto: "El bit válido/inválido de la tabla de páginas indica:", opciones: ["Si la página fue modificada.", "Si la página está en la TLB.", "Si la página pertenece al espacio lógico del proceso.", "Si la página es de solo lectura."], correcta: 2 },
+  { texto: "¿Qué código se puede compartir entre procesos con páginas compartidas?", opciones: ["El código reentrante.", "Cualquier sección de datos.", "La pila de cada proceso.", "El código que se modifica a sí mismo."], correcta: 0 },
+  { texto: "La tabla de páginas invertida tiene:", opciones: ["Una entrada por página de cada proceso.", "Varios niveles de tablas.", "Una entrada por bloque de disco.", "Una entrada por marco físico."], correcta: 3 },
+  { texto: "¿Cuál usa unidades de tamaño fijo y cuál de tamaño variable?", opciones: ["Ambas usan unidades fijas.", "Paginación: fijo. Segmentación: variable.", "Paginación: variable. Segmentación: fijo.", "Ambas usan unidades variables."], correcta: 1 },
+  { texto: "Un segmento tiene base 5000 y límite 200. El acceso con desplazamiento 250:", opciones: ["Es válido y va a la física 5250.", "Es válido y va a la física 5200.", "Es inválido y genera una excepción al SO.", "Es inválido y se redirige al segmento siguiente."], correcta: 2 },
+  { texto: "Un segmento tiene base 2000 y límite 100. El desplazamiento 40 corresponde a:", opciones: ["La dirección física 2040.", "La dirección física 2140.", "Un acceso inválido.", "La dirección física 140."], correcta: 0 },
+  { texto: "¿Qué fragmentación sufre la segmentación pura?", opciones: ["Interna.", "Ninguna.", "De la TLB.", "Externa."], correcta: 3 },
+  { texto: "La memoria virtual permite:", opciones: ["Eliminar el uso del disco.", "Ejecutar programas más grandes que la RAM.", "Evitar toda fragmentación.", "Prescindir de la MMU."], correcta: 1 },
+  { texto: "Un fallo de página ocurre cuando:", opciones: ["La traducción no está en la TLB.", "Se accede fuera del límite de un segmento.", "La página no está en memoria física y el SO la trae de disco.", "Un proceso agota su quantum."], correcta: 2 },
 ];

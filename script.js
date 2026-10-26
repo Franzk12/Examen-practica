@@ -1,9 +1,20 @@
 // --- Config ---
 const DURACION_MINUTOS = 15;
+const CANTIDAD_PREGUNTAS_SESION = 10;
+
+function elegirPreguntasSesion() {
+  const copia = [...PREGUNTAS];
+  for (let i = copia.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia.slice(0, Math.min(CANTIDAD_PREGUNTAS_SESION, copia.length));
+}
 
 // --- Estado ---
+let preguntasSesion = elegirPreguntasSesion();
 let indiceActual = 0;
-let respuestas = new Array(PREGUNTAS.length).fill(null);
+let respuestas = new Array(preguntasSesion.length).fill(null);
 let segundosRestantes = DURACION_MINUTOS * 60;
 let timerInterval = null;
 let finalizado = false;
@@ -68,9 +79,9 @@ function actualizarStatus() {
 }
 
 function renderPregunta() {
-  const p = PREGUNTAS[indiceActual];
-  progressLabel.textContent = `Pregunta ${indiceActual + 1} de ${PREGUNTAS.length}`;
-  progressFill.style.width = `${((indiceActual + 1) / PREGUNTAS.length) * 100}%`;
+  const p = preguntasSesion[indiceActual];
+  progressLabel.textContent = `Pregunta ${indiceActual + 1} de ${preguntasSesion.length}`;
+  progressFill.style.width = `${((indiceActual + 1) / preguntasSesion.length) * 100}%`;
   questionText.textContent = p.texto;
 
   optionsList.innerHTML = "";
@@ -87,7 +98,7 @@ function renderPregunta() {
   });
 
   btnAnt.disabled = indiceActual === 0;
-  btnSig.disabled = indiceActual === PREGUNTAS.length - 1;
+  btnSig.disabled = indiceActual === preguntasSesion.length - 1;
 }
 
 function finalizarEvaluacion() {
@@ -97,7 +108,7 @@ function finalizarEvaluacion() {
 
   let correctas = 0;
   resultsDetail.innerHTML = "";
-  PREGUNTAS.forEach((p, i) => {
+  preguntasSesion.forEach((p, i) => {
     const elegida = respuestas[i];
     const esCorrecta = elegida === p.correcta;
     if (esCorrecta) correctas++;
@@ -114,7 +125,7 @@ function finalizarEvaluacion() {
     resultsDetail.appendChild(item);
   });
 
-  resultsScore.textContent = `${correctas} / ${PREGUNTAS.length} correctas`;
+  resultsScore.textContent = `${correctas} / ${preguntasSesion.length} correctas`;
 
   questionCard.classList.add("hidden");
   navRow.classList.add("hidden");
@@ -123,8 +134,9 @@ function finalizarEvaluacion() {
 }
 
 function reiniciar() {
+  preguntasSesion = elegirPreguntasSesion();
   indiceActual = 0;
-  respuestas = new Array(PREGUNTAS.length).fill(null);
+  respuestas = new Array(preguntasSesion.length).fill(null);
   segundosRestantes = DURACION_MINUTOS * 60;
   finalizado = false;
 
@@ -145,7 +157,7 @@ btnAnt.addEventListener("click", () => {
 });
 
 btnSig.addEventListener("click", () => {
-  if (indiceActual < PREGUNTAS.length - 1) {
+  if (indiceActual < preguntasSesion.length - 1) {
     indiceActual++;
     renderPregunta();
   }
