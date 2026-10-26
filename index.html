@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Práctica — Sistemas Operativos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="app-header">
+      <div class="topbar">
+        <div class="group">
+          <span class="icon-badge timer-badge">⏱</span>
+          <div class="pill timer" id="timerPill">
+            <span id="timerText">15:00</span>
+          </div>
+        </div>
+        <div class="group" id="statusGroup">
+          <span class="icon-badge status-badge" id="statusIconBadge">📶</span>
+          <span class="status-text" id="statusText">Online</span>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-label" id="progressLabel">Pregunta 1 de 10</div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <main class="card" id="questionCard">
+        <h1 class="question-text" id="questionText"></h1>
+        <div class="options" id="optionsList"></div>
+      </main>
+
+      <nav class="nav-row">
+        <button class="btn btn-outline" id="btnAnt">&lt; ANT</button>
+        <button class="btn btn-outline btn-primary" id="btnSig">SIG &gt;</button>
+      </nav>
+
+      <button class="btn btn-finish" id="btnFinalizar">Finalizar Evaluación</button>
+
+      <section class="results hidden" id="resultsView">
+        <h2 id="resultsScore"></h2>
+        <div id="resultsDetail"></div>
+        <button class="btn btn-finish" id="btnReiniciar">Volver a empezar</button>
+      </section>
+    </div>
+
+  </div>
+
+  <script src="preguntas.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
